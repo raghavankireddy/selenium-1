@@ -56,7 +56,8 @@ public class brokenImage {
 				System.out.println("Image " + imageElement.getAttribute("src") + " good: " + result);
 			}
 		}
-		assertTrue(allImagesGood);
+		// test expected to fail because the URL contains 2 bad and 1 good image
+		assertFalse(allImagesGood);
 	}
 	
 	
