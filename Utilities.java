@@ -3,19 +3,17 @@ package selenium.selenium;
 import java.util.Iterator;
 import java.util.Set;
 import java.io.IOException;
-import java.util.*;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
+import java.io.File;
 
 public class Utilities {
+	public String downloadPath = "C:\\Users\\Jons\\Downloads\\";
 
 	public void snooze(int time){
 		  try {
@@ -102,5 +100,17 @@ public class Utilities {
 		return result;
 	}
 	
+	public void refreshPage(WebDriver driver){
+		// refresh the page by getting the current URL
+		driver.get(driver.getCurrentUrl());
+	}
+	
+	public boolean fileExist(String fileName){
+		File f = null;
+		f = new File(fileName);
+		boolean b = f.exists();
+		return b;
+		
+	}
 
 }
