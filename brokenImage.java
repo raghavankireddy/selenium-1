@@ -21,28 +21,29 @@ public class brokenImage {
 	
 	
     @BeforeClass
-	public static void start() throws Exception {
-		System.out.println("The start");    	
+	public static void start() throws Exception {    	
+		System.out.println("[Broken Image test]");
     	Initialize init = new Initialize();
     	driver = init.setUp( browserDriverType,"http://the-internet.herokuapp.com/broken_images" );
     }
  
 	@AfterClass
 	public static void end(){
-		System.out.println("The end");
 		init.teardown(driver);
 	}
 	
 	@Test
 	public void testA(){
 	// verify title of page 
+		System.out.println("     - Broken Image test - Verify page title");
 		item = driver.findElement(By.cssSelector(".example>h3"));
 		assertTrue(item.getText().contains("Broken Images"));
 	}
 	
 	@Test
 	public void testB(){
-	// verify title of page 
+		System.out.println("     - Broken Image test - Verify all images on page.");
+
 		boolean result = true;
 		boolean allImagesGood = true;
 		
@@ -53,18 +54,9 @@ public class brokenImage {
 				if(!result){
 					allImagesGood = false;
 				}
-				System.out.println("Image " + imageElement.getAttribute("src") + " good: " + result);
 			}
 		}
 		// test expected to fail because the URL contains 2 bad and 1 good image
 		assertFalse(allImagesGood);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 }

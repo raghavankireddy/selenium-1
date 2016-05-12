@@ -30,23 +30,21 @@ public class parkingcalc {
 	
     @BeforeClass
 	public static void start() throws Exception {
-
+		System.out.println("[Parking lot test]"); 
     	driver = init.setUp( browserDriverType,"http://adam.goucher.ca/parkcalc/" );
     }
  
 	@AfterClass
 	public static void end(){
-		System.out.println("In teardown");
 		init.teardown(driver);
 	}
 	
 	  @Test
 	    public void testA(){
-			System.out.println("In chooseALot");
+			System.out.println("     - Parking lot test - test dropdrop list item. ");
 			// Choose A lot option dropdown list
 			WebElement item;
 	    	List<WebElement> items;
-	 
 	    	items = driver.findElements(By.xpath("html/body/form/table/tbody/tr[1]/td[2]/select/option"));
 	    	item = driver.findElement(By.id("Lot"));
 	    	Select selectedItem = new Select(item);
@@ -65,7 +63,7 @@ public class parkingcalc {
 	  
 	@Test
 	public void testB(){
-		System.out.println("In chooseEntryDateime");
+		System.out.println("     - Parking lot test -  Choose entry Date time");
 		// Choose the entry date and time
 	   	WebElement item;
 	   	item = driver.findElement(By.id("EntryTime"));
@@ -80,7 +78,7 @@ public class parkingcalc {
     
 	@Test
 	public void testC(){
-		System.out.println("In chooseLeavingDateTime");
+		System.out.println("     - Parking lot test -  Choose leaving Date time");
 		// Choose leaving Date time
 	   	WebElement item;
 	   	item = driver.findElement(By.id("ExitTime"));
@@ -95,23 +93,20 @@ public class parkingcalc {
 
 	@Test
     public void testD(){
-		System.out.println("In testTableElementLabels");
+		System.out.println("     - Parking lot test -  Test Table Element Labels");
 		// Table label elements such as Choose a lot, Entry and Leaving Date time
     	String result;
-    	
     	result = driver.findElement(By.xpath("html/body/form/table/tbody/tr[1]/td[1]")).getText();
     	assertTrue(result.contains("Choose a Lot"));
-    	
     	result = driver.findElement(By.xpath("html/body/form/table/tbody/tr[2]/td[1]")).getText();
     	assertTrue(result.contains("Choose Entry Date and Time" ));
-    	
     	result = driver.findElement(By.xpath("html/body/form/table/tbody/tr[3]/td[1]")).getText();
     	assertTrue(result.contains("Choose Leaving Date and Time" ));
    }
 
 	@Test
 	public void testE(){
-		System.out.println("In calculateParkingFee");
+		System.out.println("     - Parking lot test -  Calculate Parking Fee");
 		// Submit button and does the calculation and assertions
 	   	WebElement item;
 	   	String result;

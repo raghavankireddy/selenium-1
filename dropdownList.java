@@ -24,15 +24,13 @@ public class dropdownList {
 
 	
     @BeforeClass
-	public static void start() throws Exception {
-		System.out.println("The start");    	
+	public static void start() throws Exception {   	
     	Initialize init = new Initialize();
     	driver = init.setUp( browserDriverType,"http://the-internet.herokuapp.com/dropdown" );
     }
  
 	@AfterClass
 	public static void end(){
-		System.out.println("The end");
 		init.teardown(driver);
 	}
 	

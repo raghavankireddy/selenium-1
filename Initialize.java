@@ -9,7 +9,6 @@ public class Initialize {
 	Utilities utility = new Utilities();
 	
 	public WebDriver setUp(String browserDriverType, String URL) throws Exception {
-		System.out.println("In setUP");
 		WebDriver driver = null;
 		if (browserDriverType == "FireFoxDriver"){
 			driver = new FirefoxDriver(newProfile());
@@ -34,7 +33,6 @@ public class Initialize {
 	}
 	
 	public void teardown(WebDriver driver){
-		System.out.println("In teardown");
     	driver.close();
 	}
 }

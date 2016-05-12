@@ -22,8 +22,8 @@ public class dragAnddrop {
 	WebElement item;
 	
     @BeforeClass
-	public static void start() throws Exception {
-		System.out.println("The start");    	
+	public static void start() throws Exception {   
+		System.out.println("[Download file test]  - Test Not Implemented.  Selenium HTML control broken");	
     	Initialize init = new Initialize();
 		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     	driver = init.setUp( browserDriverType,"http://the-internet.herokuapp.com/drag_and_drop" );
@@ -31,13 +31,12 @@ public class dragAnddrop {
  
 	@AfterClass
 	public static void end(){
-		System.out.println("The end");
 		init.teardown(driver);
 	}
 	
 	@Test
 	public void testA(){
-/*		System.out.println("In Verify Challenging DOM page Label");	
+/*		System.out.println("Drag and Drop broken because Selenium control doesn't work with HTML5");	
 		WebElement source;
 		WebElement target;
 		String sourceXpath =  ".//*[@id='column-a']";
@@ -61,7 +60,4 @@ public class dragAnddrop {
 		assertTrue(source.getText().contains("B"));
 		assertTrue(source.getText().contains("A"));*/
 	}
-	
-	
-	
 }

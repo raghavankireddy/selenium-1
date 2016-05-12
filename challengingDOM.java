@@ -18,21 +18,20 @@ public class challengingDOM {
 	WebElement item;
 	
     @BeforeClass
-	public static void start() throws Exception {
-		System.out.println("The start");    	
+	public static void start() throws Exception {;   
+	System.out.println("[Challenging DOM test]");
     	Initialize init = new Initialize();
     	driver = init.setUp( browserDriverType,"http://the-internet.herokuapp.com/challenging_dom" );
     }
  
 	@AfterClass
 	public static void end(){
-		System.out.println("The end");
 		init.teardown(driver);
 	}
 	
 	@Test
 	public void testA(){
-		System.out.println("In Verify Challenging DOM page Label");	
+		System.out.println("     - Challenging DOM - Verify title page");	
 		WebElement item; 
 		item = driver.findElement(By.cssSelector(".example>h3"));
 		assertTrue(item.getText().contains("Challenging DOM"));
@@ -41,24 +40,17 @@ public class challengingDOM {
 	@Test
 	public void testB(){
 		// verify that locating the 3 button with dynamic labels can be located by class using Xpath
-		System.out.println("");	
+		System.out.println("     - Challenging DOM - Verify three dynamic buttons are on page");	
 		WebElement item; 
 		item = driver.findElement(By.xpath("html/body/div[2]/div/div/div/div/div[1]/a[@class='button']"));
-		System.out.println(item.getText());
-		
 		item = driver.findElement(By.xpath("html/body/div[2]/div/div/div/div/div[1]/a[@class='button alert']"));
-		System.out.println(item.getText());		
-		
-		item = driver.findElement(By.xpath("html/body/div[2]/div/div/div/div/div[1]/a[@class='button success']"));
-		System.out.println(item.getText());			
+		item = driver.findElement(By.xpath("html/body/div[2]/div/div/div/div/div[1]/a[@class='button success']"));			
 	}
 	
 	@Test
 	public void testC(){
-		// verify that locating the 3 button with dynamic labels can be located by class using Xpath
+		System.out.println("     - Challenging DOM - Verify canvas size");	
 		String result;
-		System.out.println("");	
-		WebElement item; 
 		// assert canvas' height
 		result = driver.findElement(By.cssSelector("#canvas")).getAttribute("height");
 		assertEquals(result,"200");
@@ -68,8 +60,5 @@ public class challengingDOM {
 		result = driver.findElement(By.cssSelector("#canvas")).getAttribute("style");
 		assertTrue(result.contains("border"));	
 		assertTrue(result.contains("1px dotted"));	
-		
 	}
-		
-	
 }

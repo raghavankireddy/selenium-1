@@ -109,6 +109,7 @@ public class Utilities {
 		File f = null;
 		f = new File(fileName);
 		boolean b = f.exists();
+		f.delete();
 		return b;
 		
 	}

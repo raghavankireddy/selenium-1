@@ -21,8 +21,8 @@ public class upload {
 	WebElement item;
 	
     @BeforeClass
-	public static void start() throws Exception {
-		System.out.println("The start");    	
+	public static void start() throws Exception {  	
+		System.out.println("[Upload File Test]");     	
     	Initialize init = new Initialize();
 		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     	driver = init.setUp( browserDriverType,"http://the-internet.herokuapp.com/upload" );
@@ -30,13 +30,12 @@ public class upload {
  
 	@AfterClass
 	public static void end(){
-		System.out.println("The end");
 		init.teardown(driver);
 	}
 	
 	@Test
 	public void testA(){
-		System.out.println("File Uploader page test");	
+		System.out.println("     - Upload File Test - Uploading file.");     	
 		WebElement item;
 		item = driver.findElement(By.xpath(".//*[@id='file-upload']"));
 		item.sendKeys("c:\\commands\\testupload.txt");
@@ -45,8 +44,4 @@ public class upload {
 		item = driver.findElement(By.id("uploaded-files"));		
 		assertTrue(item.getText().contains("testupload.txt"));
 	}
-	
-	
-	
-	
 }

@@ -18,21 +18,20 @@ public class checkBoxes {
 	WebElement item;
 	
     @BeforeClass
-	public static void start() throws Exception {
-		System.out.println("The start");    	
+	public static void start() throws Exception {  
+		System.out.println("[Checkboxes test]");	
     	Initialize init = new Initialize();
     	driver = init.setUp( browserDriverType,"http://the-internet.herokuapp.com/checkboxes" );
     }
  
 	@AfterClass
 	public static void end(){
-		System.out.println("The end");
 		init.teardown(driver);
 	}
 	
 	@Test
 	public void testA(){
-		System.out.println("In Verify CheckBoxes page Label");	
+		System.out.println("     - Checkboxes test - Verify page title.");	
 		WebElement item; 
 		item = driver.findElement(By.cssSelector(".example>h3"));
 		assertTrue(item.getText().contains("Checkboxes"));
@@ -40,9 +39,9 @@ public class checkBoxes {
 
 	@Test
 	public void testB(){
-		
+		System.out.println("     - Checkboxes test - Verify button innerText, AKA labels.");	
 		List<WebElement> checkboxes = driver.findElements(By.cssSelector("#checkboxes>input"));
-		//Verify there are only two checkboxes and they are named correctly.
+		//Verify there are only two check boxes and they are named correctly.
 		assertTrue(checkboxes.size()== 2);
 		String el = driver.findElement(By.cssSelector("#checkboxes")).getAttribute("innerText");
 		assertTrue(el.contains("checkbox 1"));
@@ -50,26 +49,20 @@ public class checkBoxes {
 	}
 
 	public void testC(){
-		//verify the second checkbox on the page is selected and the first is not.
+		System.out.println("     - Checkboxes test - verify the second checkbox on the page is selected and the first is not.");	
 		item = driver.findElement(By.xpath("html/body/div[2]/div/div/form/input[1]"));
 		assertFalse(item.isSelected());
 		item = driver.findElement(By.xpath("html/body/div[2]/div/div/form/input[2]"));
 		assertTrue(item.isSelected());
 	}
-	
 	
 	public void testD(){
-		// check first checkbox uncheck second checkbox and verify both
+		System.out.println("     - Checkboxes test - check first checkbox uncheck second checkbox and verify both.");	
 		item = driver.findElement(By.xpath("html/body/div[2]/div/div/form/input[1]"));
 		item.click();
 		assertTrue(item.isSelected());
 		item = driver.findElement(By.xpath("html/body/div[2]/div/div/form/input[2]"));
 		item.click();
 		assertFalse(item.isSelected());
-	}
-	
-	private void or(boolean contains) {
-		// TODO Auto-generated method stub
-		
 	}
 }
